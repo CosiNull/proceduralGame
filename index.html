@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Procedural Game</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <script> 
+        let mode = "player";
+        let seed = 90; //Remember 9999
+    </script>
+
+    <!--Pixi js-->
+    <script src="pixi.js"></script>
+    <link rel="shortcut icon" type="image/jpg" href="./images/enemies/slime/slimeL2.png"/>
+
+    <!--Fonts-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+</head>
+<body>    
+    <canvas id="canvas"></canvas>
+    <canvas id="myCanvas"></canvas>
+
+    <script src="game/canvasSetUp.js"  defer></script>
+
+    <script>
+        const myCanvas = document.getElementById("myCanvas");
+        const app = new PIXI.Application({
+          view: myCanvas,
+          width: window.innerWidth,
+          height: window.innerHeight,
+          resizeTo: window,
+          backgroundAlpha: 0.4,
+          backgroundColor: 0x000000,
+        });   
+        console.log(myCanvas)
+        let mainContainer = new PIXI.Container();
+        PIXI.settings.SORTABLE_CHILDREN = true;
+        mainContainer.sortableChildren = true;
+        PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST
+        app.stage.addChild(mainContainer);
+    </script>
+
+    <!--Images-->
+    <script src="images/load.js"></script>
+
+    <!--Sounds-->
+    <script src="sounds/sounds.js"></script>
+
+    <!--Math -->
+    <script src="math/random.js"></script>
+    <script src="math/functions.js"></script>
+
+    <!-- Terrain-->
+    <script src="terrain/holes.js"></script>
+    <script src="terrain/blocks.js" ></script>
+    <script src="terrain/chunks.js"></script>
+
+    <!--Camera-->
+    <script src="camera/camera.js"></script>
+
+    <!-- Map-->
+    <script src="map/mapHandler.js"></script>
+
+    <!--Objects-->
+    <script src="objects/chests.js"></script>
+
+    <!--Enemies-->
+    <script src="enemies/enemies.js"></script>
+    <script src="enemies/barrelEnemies.js"></script>
+    <script src="enemies/slimeEnemies.js"></script>
+    <script src="enemies/beeEnemies.js"></script>
+    <script src="enemies/lavaEnemies.js"></script>
+
+    <!-- Biomes-->
+    <script src="biomes/biomeEnemies.js"></script>
+
+    <!--Player-->
+    <script src="player/entity.js"></script>
+    <script src="player/dashShadows.js"></script>
+    <script src="player/particles.js"></script>
+
+    <!--UI-->
+    <script src="UI/health.js"></script>
+    <script src="UI/dash.js"></script>
+    <script src="UI/biomeName.js"></script>
+
+    <!--Menu-->
+    <script src="menus/main.js"></script>
+    <script src="menus/gameOver.js"></script>
+    <script src="menus/shop.js"></script>
+    <script src="menus/quests.js"></script>
+    <script src="menus/info.js"></script>
+
+    <!--GAME-->
+    <script src="game/index.js" defer></script>
+
+    <!--Main Menu-->
+    <div id="title" class="menu">PROCEDURAL GAME</div>
+    <div id="play" class="menu" onclick="playFromMenu()">PLAY </div>
+    <div id="shop" class="menu" onclick="setShop()">SHOP </div>
+    <div id="quests" class="menu" onclick="setQuests()">QUESTS </div>
+    <div id="info" class="menu" onclick="setInfo()">INFO </div>
+
+    <!--GameOver-->
+    <div id="gameOver" class="gamOv">GAME OVER</div>
+    <div id="backToMenuGO" class="gamOv" onclick="gameOverToMenu()">BACK TO MENU</div>
+    <div id="distanceGO" class="gamOv">DISTANCE TRAVELED</div>
+    <div id="enemiesGO" class="gamOv">ENEMIES DEFEATED</div>
+    <div id="timeGO" class="gamOv">TIME SURVIVED: </div>
+    <div id="lootGO" class="gamOv">.....LOOT: </div>
+    <div id="barGO" class="gamOv">>-----------------------------------<</div>
+    <div id="totalGO" class="gamOv">TOTAL: ..........</div>
+
+    <!--Shop-->
+    <div id="backToMenuGO" class="shop" onclick="backToMenuShop()">BACK TO MENU</div>
+    <div id="money" class="shop quests">$</div>
+
+    <div id="moreAttack" class="shop">+ ATTACK SPEED</div>
+    <div id="moreattackButt" class="shop" onclick="buyPowerUp('attack')">-18$</div>
+    <div id="moreSpeed" class="shop" >+ MOVEMENT SPEED</div>
+    <div id="morespeedButt" class="shop" onclick="buyPowerUp('speed')">-18$</div>
+    <div id="moreDash" class="shop">+ DASH DISTANCE</div>
+    <div id="moredashButt" class="shop" onclick="buyPowerUp('dash')">-18$</div>
+    <div id="moreHealth" class="shop">+ TIMER HEALTH</div>
+    <div id="moretimerButt" class="shop" onclick="buyPowerUp('timer')">-18$</div>
+
+    <div id="barShop" class="shop">>-------------------------------------------------<</div>
+    <div id="setSeed" class="shop">SET SEED</div>
+    <div id="random" class="shop" onclick="setSeedSetting('random')">RANDOM</div>
+    <div id="custom" class="shop" onclick="setSeedSetting('custom')">CUSTOM</div>
+    <div id="boss" class="shop">UNLOCK FINAL BOSS FIGHT</div>
+    <div id="bossPrice" class="shop" onclick="boss()">-508$</div>
+
+    <div id="seedPopUp" >       
+        <input type="text" id="seedInput" onkeypress='return event.charCode >= 48 && event.charCode <= 57' placeholder="ENTER NUMBER" maxlength="14">
+        <div id="cancelSeed" onclick="cancelSeed()">CANCEL</div>
+        <div id="confirmSeed" onclick="confirmSeed()">SET <b>(-1$)</b></div>
+    </div>
+
+    <!--Quests-->
+    <div id="questCompleted" class="menu">!</div>
+    <div id="backToMenuGO" class="quests" style="top:82%;" onclick="backToMenuQuests()">BACK TO MENU</div>
+    
+    <div id="templeQuest" class="quests questDes">> DISCOVER&nbsp<span style="color: rgb(235, 233, 146);"> LOST TEMPLE BIOME</span></div>
+    <div id="slimeQuest" class="quests questDes">> DISCOVER &nbsp<span style="color: rgb(146, 235, 168);"> SLIME DUNGEON BIOME</span></div>
+    <div id="beeQuest" class="quests questDes">> DISCOVER &nbsp<span style="color: rgb(146, 162, 235);"> BLUE HIVE BIOME</span></div>
+    <div id="lavaQuest" class="quests questDes">> DISCOVER &nbsp<span style="color: rgb(235, 171, 146);"> PARASITIC FLAMES BIOME</span></div>
+    <div id="travelQuest" class="quests questDes">> TRAVEL&nbsp<span style="color: rgb(146, 235, 235);">+450 BLOCKS</span>&nbspIN 1 GAME</div>
+    <div id="killQuest" class="quests questDes">> KILL&nbsp<span style="color: rgb(191, 112, 228);">+308 ENEMIES</span>&nbspIN 1 GAME</div>
+    <div id="timeQuest" class="quests questDes">> SURVIVE FOR&nbsp<span style="color: rgb(235, 146, 195);">+109 SECONDS</span>&nbspIN 1 GAME</div>
+
+    <div id="backToMenuGO" class="info" onclick="backToMenuInfo()">BACK TO MENU</div>
+    <div id="howToPlayInf" class="info infoMenu" onclick="showTutorial();playSound('UIClick');">HOW TO PLAY</div>
+    <div id="proceduralInf" class="info infoMenu" onclick="setProceduralGen()">PROCEDURAL GENERATION?</div>
+    <div id="mapInf" class="info infoMenu" onclick="showWorldMap()">WORLD MAP</div>
+    <div id="thanksInf" class="info infoMenu" onclick="showThanks()">SPECIAL THANKS</div>
+    <div id="endInf" class="info infoMenu" onclick="showEndText()">FIN DU SECONDAIRE</div>
+
+    <div id="resetInf" class="info infoMenu" onclick="resetConfirm()">RESET</div>
+    <div id="confirmText" class="resetConfirmation" style="display: none; font-size:38px; top: 10%; text-align: left; height:40%;">
+        <div style="position: absolute;">CLEARING PROGRESS MEANS <span style="color:rgb(228, 145, 145)">CLEARING</span>
+             ALL OF YOUR 
+             <span style="color:gold">GOLD</span>, PURCHASED 
+             <span style="color:rgb(148, 67, 121)">UPGRADES</span>, AND COMPLETED 
+             <span style="color:cyan">QUESTS</span>. </div>
+        <div style="position: absolute; top:83%; font-size:53px; color:red;">ARE YOU SURE THAT YOU WANT TO DELETE YOUR PROGRESS?</div>
+
+    </div>
+    <div class="resetConfirmation infoMenu" style="top:79%; left: 10%; width: 12%; height: 12%; border-color:grey; color:grey" onclick="clearProgress()">YES</div>
+    <div class="resetConfirmation infoMenu" style="top:79%; left: 28%; width: 15%; height:12%; border-color:lime; color:lime" onclick="backToInfoReset()">NO</div>
+
+    <div id="back" class="proceduralGen thanks end worldMap" onclick="backToInfo()">BACK</div>
+
+    <div id="whatIs" class="proceduralGen">WHAT IS PROCEDURAL GENERATION?</div>
+    <div id="proceduralDes" class="proceduralGen">
+        What if you wanted to generate an infinitely large world? 
+        But that world has to always be identical everytime that you generate it 
+        and it also has to always take the same amount of memory in the computer?
+        <br><br>
+        This problem seems impossible because the more you generate elements, 
+        the more you have to store them, thus the more memory is needed.
+        <br><br>
+        But, the solution is actually quite simple: Procedural Generation.
+        Procedural Generation consists of using Pseudorandom Functions to generate elements in the world that you want to create.
+        Pseudorandom Functions always generate the same output given a same input. The magic is that 
+        the output seems very random.
+        <br><br>
+        The technique for Procedural Generation is to use world coordinates as inputs in these Pseudorandom Functions. The output of a 
+        specific section of that world will then always be the same and it would seem random! Now, we just need to add a 
+        seed in the equation if we want to generate different worlds. 
+        <br><br>
+        Bam! Data is stored in an algorithm instead of in the memory. This is the procedural generation that I used in my game!
+    </div>
+
+    <div id="whatIs" class="thanks">SPECIAL THANKS</div>
+    <div id="thanksDes" class="thanks">
+        <div style="position: absolute;">
+        Thank you to <span style="color:green">Léonard</span> for drawing the cave wall sprite for me! 
+        I couldn't make a pretty one.<br><br>
+        Thank you to <span style="color:rgb(226, 88, 88)">William N.</span> and <span style="color:rgb(121, 112, 204)">Wei Heng</span> for the big amount of ideas, tips and feedback to make the better game!<br><br>
+        Thanks to <span style="color:rgb(231, 229, 67)">James</span> for finding some bugs<br><br>
+        And also thanks to all the others that did the same at a smaller scale during the last two months!
+        </div>
+    </div>
+    <div id="whatIsEnd" class="end">Ceci est mon dernier jeu,</div>
+    <div id="finalSpeech" class="end">
+        pas juste de mon secondaire, probablement de ma vie. <br><br>
+        Je planifie entamer d'autres types de projets qui ne sont pas des jeux dans les prochaines années. 
+        Aussi bien donner tout ce que j'ai dans mon dernier jeu qui marque aussi la fin de mon secondaire. 
+        C'est ainsi que j'ai entamé le projet le plus ambitieux que j'ai fait jusqu'à maintenant. 
+        <br><br>
+        Mon parcours en informatique a commencé en essayant de comprendre les senseurs en robotique de 6ème année,
+        à faire plusieurs petits jeux sur Hopscotch, à essayer d'apprendre de vrais langages de programmation  par moi-même lorsque 
+        j'ai rencontré de véritables programmeurs, à tenter de programmer d'autres jeux et petits algorithmes, 
+        à programmer un IA qui joue aux échecs, à bâtir des programmes simples sur ma calculatrice, à simuler un écosystème avec un ami, 
+        à constuire une petite application de communication vidéo pour un plan, et enfin, à ce jeu 
+        qui combine la plupart de mes compétences informatiques que j'ai apprises durant ces dernières années.
+        C'était un long parcours, mais merci à tout le monde qui m'a accompagné durant ce trajet 
+        qui s'est étendu sur mes années de secondaire.
+        <br><br>
+        Merci pour jouer à Procedural Game! J'espère que vous vous rendrez jusqu'au dernier boss!
+        <br><br>
+        Vincent Ly
+    </div>
+
+    <div id="whatIs" class="worldMap">WORLD MAP</div>
+    <div id="lavaMap" class="worldMap">
+        <div id="hiveMap">
+            <div id="slimeMap">
+                <div id="templeMap">
+                    <div id="caveMap"> 
+                        CAVES
+                    </div>
+                    <div id="templeText">TEMPLE</div>
+                </div>
+                <div id="templeText" style="top:90%;">SLIME</div>
+            </div>
+            <div id="templeText" style="top:93%;">HIVE</div>
+        </div>
+        <div id="templeText" style="top:95%;">FLAMES</div>
+    </div>
+    <div id="mapTip" class="worldMap">Tip: Entering new biomes gives you a 16 seconds bonus to your timer! <br><br>
+        That's why discovering biomes might be more advantageous than killing enemies to survive sometimes.</div>
+    
+    <!--Tutorial-->
+    <div id="goalTut" class="tutorial0">GOAL (1/3)</div>
+    <div id="goalDesTut" class="tutorial0">
+        <div style="position: absolute; line-height:54px;">  
+        DO NOT LET THE <span style="color:red">TIMER</span> RUN OUT OF TIME.<br><br>
+        <span style="color:rgb(72, 255, 0)">SURVIVE</span> THE LONGEST TIME POSSIBLE BY 
+        KILLING <span style="color:orange;">ENEMIES</span> OR DISCOVERING NEW <span style="color:orchid">BIOMES</span> 
+        TO <span style="color:cyan">GAIN TIME</span>.
+    </div>
+    <div id="buttonTut0" class="tutorial0" onclick="tutorialPageNext()">NEXT</div>
+    </div>
+    
+    <div id="goalTut" class="tutorial1">MOVES (2/3)</div>
+    <div id="goalDesTut" class="tutorial1">
+        <div style="position: absolute;"> 
+        <span style="font-size: 49px; color:rgb(238, 255, 0);">W A S D</span>&nbsp; 
+        KEYS TO <span style="font-size: 49px; color:rgb(238, 255, 0);">MOVE</span><br><br><br>
+        <span style="font-size: 49px; color:rgb(204, 0, 255);">LEFT CLICK</span> TO
+        <span style="font-size: 49px; color:rgb(204, 0, 255);">ATTACK</span>
+        </div>
+    </div>
+    <div id="buttonTut0" class="tutorial1" onclick="tutorialPageNext()" style="left:80%">NEXT</div>
+    <div id="buttonTut0" class="tutorial1" onclick="tutorialPageBack()" style="left:20%">BACK</div>
+
+    <div id="goalTut" class="tutorial2">SPECIAL MOVE (3/3)</div>
+    <div id="goalDesTut" class="tutorial2">
+        <div style="position: absolute; line-height: 78px;"> 
+        <span style="font-size: 49px; color:rgb(0, 119, 255);">RIGHT CLICK</span> TO
+        <span style="font-size: 49px; color:rgb(0, 119, 255);">DASH </span>AND GET 
+        <span style="font-size: 49px; color:rgb(255, 0, 0);">DAMAGE BOOST</span><br>
+        <div style="font-size: 22px; color:white; line-height: 34px;">TIP: DASH often to get damage boost and to discover biomes faster...</div>
+        </div>
+    </div>
+    <div id="buttonTut0" class="tutorial2" onclick="tutorialPageBack()" style="left:20%">BACK</div>
+    <div id="buttonTut0" class="tutorial2" onclick="finishTutorial()" style="left:80%">OK</div>
+
+    <iframe frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+    allowfullscreen id="stuff"></iframe>
+
+    <script src="menus/elements.js" defer></script>
+</body>
+</html>

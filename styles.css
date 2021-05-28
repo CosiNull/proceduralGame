@@ -1,0 +1,1127 @@
+/*Canvas element*/
+#canvas {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  background-color: rgb(0, 0, 0);
+  opacity: 0.3;
+  z-index: -1;
+}
+
+#myCanvas {
+  display: block;
+  left: 0px;
+  top: 0px;
+  position: fixed;
+  background-color: rgb(0, 0, 0);
+  z-index: -1;
+}
+body {
+  cursor: url("./images/cursor/cursor.png") 13 13, default;
+}
+
+#title {
+  font-family: "Press Start 2P", cursive;
+  font-size: 80px;
+  color: white;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+  width: 90%;
+  height: 20%;
+
+  left: 50%;
+  top: 2%;
+  transform: translate(-50%, 0);
+  background-color: rgb(0, 0, 0);
+  /*border: 10px double white;*/
+}
+
+#play {
+  font-family: "Press Start 2P", cursive;
+  font-size: 51px;
+  top: 26%;
+  left: 7%;
+  color: lime;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 40%;
+  height: 16%;
+  background-color: rgb(0, 0, 0);
+  border: 10px double yellowgreen;
+}
+#play:hover {
+  /*background-color: rgb(70, 27, 27);*/
+  border: 12px double yellowgreen;
+  font-size: 53px;
+  cursor: pointer;
+}
+#shop {
+  font-family: "Press Start 2P", cursive;
+  font-size: 51px;
+  top: 48%;
+  left: 7%;
+  color: rgb(228, 245, 73);
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 40%;
+  height: 16%;
+  background-color: rgb(0, 0, 0);
+  border: 10px double rgb(223, 255, 160);
+}
+#shop:hover {
+  /*background-color: rgb(70, 27, 27);*/
+  border: 12px double rgb(223, 255, 160);
+  font-size: 53px;
+  cursor: pointer;
+}
+#quests {
+  font-family: "Press Start 2P", cursive;
+  font-size: 36px;
+  top: 70%;
+  left: 7%;
+  color: rgb(255, 121, 68);
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 19%;
+  height: 16%;
+  background-color: rgb(0, 0, 0);
+  border: 10px double rgb(255, 121, 68);
+}
+#quests:hover {
+  /*background-color: rgb(70, 27, 27);*/
+  border: 12px double rgb(255, 121, 68);
+  font-size: 38px;
+  cursor: pointer;
+}
+#info {
+  font-family: "Press Start 2P", cursive;
+  font-size: 36px;
+  top: 70%;
+  left: 29%;
+  color: rgb(76, 102, 247);
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 18%;
+  height: 16%;
+  background-color: rgb(0, 0, 0);
+  border: 10px double rgb(76, 102, 247);
+}
+#info:hover {
+  /*background-color: rgb(70, 27, 27);*/
+  border: 12px double rgb(76, 102, 247);
+  font-size: 38px;
+  cursor: pointer;
+}
+
+/**/
+#gameOver {
+  font-family: "Press Start 2P", cursive;
+  font-size: 80px;
+  color: red;
+  position: fixed;
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+  width: 90%;
+  height: 20%;
+
+  left: 50%;
+  top: 2%;
+  transform: translate(-50%, 0);
+  background-color: rgb(0, 0, 0);
+  /*border: 10px double white;*/
+}
+
+#backToMenuGO {
+  font-family: "Press Start 2P", cursive;
+  font-size: 28px;
+  top: 84%;
+  left: 50%;
+  color: white;
+  position: fixed;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  transform: translate(-50%, 0);
+
+  width: 30%;
+  height: 10%;
+  background-color: rgb(0, 0, 0);
+  border: 10px double white;
+}
+#backToMenuGO:hover {
+  /*background-color: rgb(70, 27, 27);*/
+  border: 12px double white;
+  font-size: 30px;
+  cursor: pointer;
+}
+#distanceGO {
+  font-family: "Press Start 2P", cursive;
+  font-size: 28px;
+  color: white;
+  position: fixed;
+  display: none;
+
+  width: 80%;
+  height: 20%;
+
+  left: 3%;
+  top: 25%;
+  background-color: rgb(0, 0, 0);
+}
+#enemiesGO {
+  font-family: "Press Start 2P", cursive;
+  font-size: 28px;
+  color: white;
+  position: fixed;
+  display: none;
+
+  width: 80%;
+  height: 20%;
+
+  left: 3%;
+  top: 34%;
+  background-color: rgb(0, 0, 0);
+}
+#timeGO {
+  font-family: "Press Start 2P", cursive;
+  font-size: 28px;
+  color: white;
+  position: fixed;
+  display: none;
+
+  width: 80%;
+  height: 20%;
+
+  left: 3%;
+  top: 43%;
+  background-color: rgb(0, 0, 0);
+}
+#lootGO {
+  font-family: "Press Start 2P", cursive;
+  font-size: 28px;
+  color: white;
+  position: fixed;
+  display: none;
+
+  width: 80%;
+  height: 20%;
+
+  left: 3%;
+  top: 52%;
+  background-color: rgb(0, 0, 0);
+}
+#barGO {
+  font-family: "Press Start 2P", cursive;
+  font-size: 28px;
+  color: white;
+  position: fixed;
+  display: none;
+
+  width: 80%;
+  height: 20%;
+
+  left: 3%;
+  top: 61%;
+  background-color: rgb(0, 0, 0);
+}
+#totalGO {
+  font-family: "Press Start 2P", cursive;
+  font-size: 42px;
+  color: rgb(23, 135, 143);
+  position: fixed;
+  display: none;
+
+  width: 80%;
+  height: 10%;
+
+  left: 3%;
+  top: 70%;
+  background-color: rgb(0, 0, 0);
+}
+
+#scoreText {
+  font-family: "Press Start 2P", cursive;
+  font-size: 28px;
+  color: white;
+  position: fixed;
+
+  background-color: rgb(0, 0, 0);
+}
+
+/*Shop*/
+#money {
+  font-family: "Press Start 2P", cursive;
+  font-size: 74px;
+  color: gold;
+  position: fixed;
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+  width: 90%;
+  height: 20%;
+
+  left: 50%;
+  top: 2%;
+  transform: translate(-50%, 0);
+  background-color: rgb(0, 0, 0);
+  /*border: 10px double white;*/
+}
+#moreAttack {
+  font-family: "Press Start 2P", cursive;
+  font-size: 24px;
+  color: white;
+  position: fixed;
+  display: none;
+
+  width: 40%;
+  height: 20%;
+
+  left: 3%;
+  top: 26%;
+  background-color: rgb(0, 0, 0);
+}
+#moreattackButt {
+  font-family: "Press Start 2P", cursive;
+  font-size: 23px;
+  top: 26%;
+  left: 34%;
+  color: rgb(243, 153, 50);
+  position: fixed;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  transform: translate(0, -28%);
+
+  width: 10%;
+  height: 6%;
+  background-color: rgb(0, 0, 0);
+  border: 2px solid rgb(243, 153, 50);
+}
+#moreattackButt:hover {
+  /*background-color: rgb(70, 27, 27);*/
+  border: 4px solid rgb(243, 153, 50);
+  font-size: 25px;
+  cursor: pointer;
+}
+#moreSpeed {
+  font-family: "Press Start 2P", cursive;
+  font-size: 24px;
+  color: white;
+  position: fixed;
+  display: none;
+
+  width: 40%;
+  height: 20%;
+
+  left: 3%;
+  top: 35%;
+  background-color: rgb(0, 0, 0);
+}
+#morespeedButt {
+  font-family: "Press Start 2P", cursive;
+  font-size: 23px;
+  top: 35%;
+  left: 34%;
+  color: rgb(108, 50, 243);
+  position: fixed;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  transform: translate(0, -28%);
+
+  width: 10%;
+  height: 6%;
+  background-color: rgb(0, 0, 0);
+  border: 2px solid rgb(108, 50, 243);
+}
+#morespeedButt:hover {
+  /*background-color: rgb(70, 27, 27);*/
+  border: 4px solid rgb(108, 50, 243);
+  font-size: 25px;
+  cursor: pointer;
+}
+#moreDash {
+  font-family: "Press Start 2P", cursive;
+  font-size: 24px;
+  color: white;
+  position: fixed;
+  display: none;
+
+  width: 80%;
+  height: 20%;
+
+  left: 50%;
+  top: 35%;
+  background-color: rgb(0, 0, 0);
+}
+#moredashButt {
+  font-family: "Press Start 2P", cursive;
+  font-size: 23px;
+  top: 35%;
+  left: 80%;
+  color: rgb(50, 243, 147);
+  position: fixed;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  transform: translate(0, -28%);
+
+  width: 10%;
+  height: 6%;
+  background-color: rgb(0, 0, 0);
+  border: 2px solid rgb(50, 243, 147);
+}
+#moredashButt:hover {
+  /*background-color: rgb(70, 27, 27);*/
+  border: 4px solid rgb(50, 243, 147);
+  font-size: 25px;
+  cursor: pointer;
+}
+#moreHealth {
+  font-family: "Press Start 2P", cursive;
+  font-size: 24px;
+  color: white;
+  position: fixed;
+  display: none;
+
+  width: 80%;
+  height: 5%;
+
+  left: 50%;
+  top: 26%;
+  background-color: rgb(0, 0, 0);
+}
+#moretimerButt {
+  font-family: "Press Start 2P", cursive;
+  font-size: 23px;
+  top: 26%;
+  left: 80%;
+  color: rgb(228, 31, 211);
+  position: fixed;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  transform: translate(0, -28%);
+
+  width: 10%;
+  height: 6%;
+  background-color: rgb(0, 0, 0);
+  border: 2px solid rgb(228, 31, 211);
+}
+#moretimerButt:hover {
+  /*background-color: rgb(70, 27, 27);*/
+  border: 4px solid rgb(228, 31, 211);
+  font-size: 25px;
+  cursor: pointer;
+}
+
+#barShop {
+  font-family: "Press Start 2P", cursive;
+  font-size: 24px;
+  color: white;
+  position: fixed;
+  display: none;
+
+  width: 90%;
+  height: 5%;
+
+  left: 3%;
+  top: 46%;
+  background-color: rgb(0, 0, 0);
+}
+#setSeed {
+  font-family: "Press Start 2P", cursive;
+  font-size: 30px;
+  color: white;
+  position: fixed;
+  display: none;
+
+  width: 90%;
+  height: 5%;
+
+  left: 3%;
+  top: 56%;
+  background-color: rgb(0, 0, 0);
+}
+#random {
+  font-family: "Press Start 2P", cursive;
+  font-size: 23px;
+  top: 56%;
+  left: 28%;
+  color: rgb(255, 255, 255);
+  position: fixed;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  transform: translate(0, -28%);
+
+  width: 13%;
+  height: 8%;
+  background-color: rgb(0, 0, 0);
+  border: 2px solid rgb(119, 36, 115);
+}
+#random:hover {
+  /*background-color: rgb(70, 27, 27);*/
+  border: 5px solid rgb(119, 36, 115);
+  font-size: 25px;
+  cursor: pointer;
+}
+#custom {
+  font-family: "Press Start 2P", cursive;
+  font-size: 23px;
+  top: 56%;
+  left: 44%;
+  color: rgb(56, 56, 56);
+  position: fixed;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  transform: translate(0, -28%);
+
+  width: 13%;
+  height: 8%;
+  background-color: rgb(0, 0, 0);
+  border: 2px solid rgb(196, 218, 3);
+}
+#custom:hover {
+  /*background-color: rgb(70, 27, 27);*/
+  border: 5px solid rgb(196, 218, 3);
+  font-size: 25px;
+  cursor: pointer;
+}
+#boss {
+  font-family: "Press Start 2P", cursive;
+  font-size: 39px;
+  color: rgb(255, 121, 121);
+  position: fixed;
+  display: none;
+
+  width: 90%;
+  height: 5%;
+
+  left: 3%;
+  top: 70%;
+  background-color: rgb(0, 0, 0);
+}
+#bossPrice {
+  font-family: "Press Start 2P", cursive;
+  font-size: 36px;
+  top: 70%;
+  left: 72%;
+  color: rgb(224, 0, 0);
+  position: fixed;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  transform: translate(0, -28%);
+
+  width: 20%;
+  height: 10%;
+  background-color: rgb(0, 0, 0);
+  border: 6px solid rgb(224, 0, 0);
+}
+#bossPrice:hover {
+  /*background-color: rgb(70, 27, 27);*/
+  border: 8px solid rgb(224, 0, 0);
+  font-size: 38px;
+  cursor: pointer;
+}
+
+#seedPopUp {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 34%;
+  height: 23%;
+  background-color: rgb(35, 35, 36);
+  display: none;
+
+  border: 14px double rgb(210, 238, 50);
+  z-index: 100;
+}
+
+#seedInput {
+  position: absolute;
+  top: 16%;
+  left: 50%;
+  width: 88%;
+  height: 30%;
+  transform: translate(-50%, 0);
+  background-color: rgb(252, 240, 136);
+
+  font-family: "Press Start 2P", cursive;
+  font-size: 27px;
+  text-align: center;
+}
+
+#cancelSeed {
+  position: absolute;
+  top: 60%;
+  left: 5%;
+  width: 30%;
+  height: 22%;
+  background-color: rgb(247, 129, 129);
+
+  border: 1px solid rgb(255, 62, 62);
+  font-family: "Press Start 2P", cursive;
+  font-size: 20px;
+  text-align: center;
+  color: rgb(255, 0, 0);
+
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+#cancelSeed:hover {
+  /*background-color: rgb(70, 27, 27);*/
+  border: 3px solid rgb(224, 0, 0);
+  font-size: 22px;
+  cursor: pointer;
+}
+#confirmSeed {
+  position: absolute;
+  top: 60%;
+  left: 38%;
+  width: 56%;
+  height: 22%;
+  background-color: rgb(129, 210, 247);
+
+  border: 1px solid rgb(38, 122, 247);
+  font-family: "Press Start 2P", cursive;
+  font-size: 20px;
+  text-align: center;
+  color: rgb(62, 123, 236);
+
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+#confirmSeed:hover {
+  /*background-color: rgb(70, 27, 27);*/
+  border: 3px solid rgb(38, 122, 247);
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.soldOut {
+  font-family: "Press Start 2P", cursive;
+  font-size: 23px;
+  color: rgb(153, 153, 153);
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translate(0, -28%);
+
+  width: 10%;
+  height: 6%;
+  background-color: rgb(0, 0, 0);
+  border: 2px solid rgb(94, 94, 94);
+}
+/*Quests*/
+.questDes {
+  font-family: "Press Start 2P", cursive;
+  font-size: 22px;
+  color: white;
+  position: fixed;
+  display: none;
+
+  width: 80%;
+  height: 5%;
+
+  /*left: 50%;
+  top: 26%;*/
+  background-color: rgb(0, 0, 0);
+}
+#templeQuest {
+  top: 24%;
+  left: 3%;
+}
+#slimeQuest {
+  top: 32%;
+  left: 3%;
+}
+#beeQuest {
+  top: 40%;
+  left: 3%;
+}
+#lavaQuest {
+  top: 48%;
+  left: 3%;
+}
+#travelQuest {
+  top: 64%;
+  left: 3%;
+}
+#killQuest {
+  top: 72%;
+  left: 3%;
+}
+#timeQuest {
+  top: 56%;
+  left: 3%;
+}
+.questBounty {
+  font-family: "Press Start 2P", cursive;
+  font-size: 22px;
+  color: rgba(255, 217, 0, 0.692);
+  position: fixed;
+  left: 69%;
+  display: none;
+
+  width: 10%;
+  height: 5%;
+
+  /*left: 50%;
+  top: 26%;*/
+  background-color: rgb(0, 0, 0);
+}
+.questClaim {
+  font-family: "Press Start 2P", cursive;
+  font-size: 20px;
+  color: rgba(231, 231, 231, 0.692);
+  position: fixed;
+  left: 82%;
+  display: none;
+
+  width: 12%;
+  height: 5%;
+
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transform: translate(0, -28%);
+
+  /*left: 50%;
+  top: 26%;*/
+  border: 1px solid rgba(214, 214, 214, 0.692);
+  background-color: rgb(0, 0, 0);
+}
+/*
+.questClaim:hover {
+  font-size: 22px;
+  border: 1px solid rgba(231, 231, 231, 0.692);
+}
+*/
+.questClaimable {
+  font-family: "Press Start 2P", cursive;
+  font-size: 21px;
+  color: gold;
+  position: fixed;
+  left: 82%;
+  display: none;
+
+  width: 12%;
+  height: 5%;
+
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transform: translate(0, -28%);
+
+  /*left: 50%;
+  top: 26%;*/
+  border: 2px solid gold;
+  background-color: rgb(0, 0, 0);
+}
+.questClaimable:hover {
+  font-size: 23px;
+  cursor: pointer;
+  border: 4px solid gold;
+}
+
+#questCompleted {
+  position: fixed;
+  top: 68%;
+  left: 25%;
+  display: none;
+  color: black;
+  width: 50px;
+  height: 50px;
+  z-index: 101;
+  background-color: white;
+  font-family: "Press Start 2P", cursive;
+  font-size: 36px;
+
+  border-radius: 30%;
+  padding: 0px;
+
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transform: translate(-50, -50%);
+
+  border: 3px solid rgb(255, 121, 68);
+}
+
+.infoMenu {
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%, 0);
+
+  width: 41%;
+  height: 10%;
+  border: 8px double rgb(62, 65, 235);
+  color: white;
+  display: none;
+
+  font-family: "Press Start 2P", cursive;
+  font-size: 26px;
+
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.infoMenu:hover {
+  border-width: 12px;
+  font-size: 29px;
+  cursor: pointer;
+}
+#howToPlayInf {
+  top: 3%;
+}
+#proceduralInf {
+  top: 19%;
+  border-color: green;
+}
+#mapInf {
+  top: 35%;
+  border-color: rgb(170, 41, 24);
+}
+#thanksInf {
+  top: 51%;
+  border-color: rgb(156, 14, 175);
+}
+#endInf {
+  top: 68%;
+  border-color: rgb(175, 168, 99);
+}
+#resetInf {
+  left: 93%;
+  width: 110px;
+  height: 40px;
+  top: 88%;
+  border-color: rgb(109, 102, 102);
+  color: rgba(255, 255, 255, 0.651);
+  font-size: 18px;
+}
+#confirmText {
+  font-family: "Press Start 2P", cursive;
+  font-size: 80px;
+  color: white;
+  position: fixed;
+  display: flex;
+
+  line-height: 66px;
+
+  width: 90%;
+  height: 60%;
+
+  left: 4%;
+  top: 2%;
+  background-color: rgb(0, 0, 0);
+}
+
+#back {
+  position: fixed;
+  left: 50%;
+  top: 83%;
+  transform: translate(-50%, 0);
+
+  width: 20%;
+  height: 10%;
+  border: 8px double rgb(228, 228, 228);
+  color: white;
+  display: none;
+
+  font-family: "Press Start 2P", cursive;
+  font-size: 28px;
+
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+#back:hover {
+  border-width: 12px;
+  font-size: 29px;
+  cursor: pointer;
+}
+
+#whatIs {
+  font-family: "Press Start 2P", cursive;
+  font-size: 40px;
+  color: white;
+  position: fixed;
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+  width: 100%;
+  height: 10%;
+
+  left: 50%;
+  top: 2%;
+  transform: translate(-50%, 0);
+  background-color: rgb(0, 0, 0);
+  /*border: 10px double white;*/
+}
+#proceduralDes {
+  font-family: "Press Start 2P", cursive;
+  font-size: 14px;
+  color: white;
+  position: fixed;
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  text-align: justify;
+  line-height: 23px;
+  width: 90%;
+  height: 24%;
+
+  left: 50%;
+  top: 35%;
+  transform: translate(-50%, 0);
+  background-color: rgb(0, 0, 0);
+  /*border: 10px double white;*/
+}
+#thanksDes {
+  font-family: "Press Start 2P", cursive;
+  font-size: 26px;
+  color: white;
+  position: fixed;
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  text-align: justify;
+  line-height: 33px;
+  width: 90%;
+  height: 24%;
+
+  left: 50%;
+  top: 35%;
+  transform: translate(-50%, 0);
+  background-color: rgb(0, 0, 0);
+  /*border: 10px double white;*/
+}
+#lavaMap {
+  position: fixed;
+  width: 450px;
+  height: 450px;
+  background-color: orangered;
+  display: none;
+
+  left: 50%;
+  top: 46%;
+  transform: translate(-50%, -50%);
+}
+#hiveMap {
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  background-color: rgb(105, 107, 238);
+
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+#slimeMap {
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  background-color: rgb(91, 141, 63);
+
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+#templeMap {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background-color: rgb(218, 189, 25);
+
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+#caveMap {
+  position: absolute;
+  display: flex;
+  width: 60px;
+  height: 60px;
+  background-color: rgb(71, 71, 71);
+
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  font-family: "Press Start 2P", cursive;
+  font-size: 11px;
+}
+#templeText {
+  position: absolute;
+  display: flex;
+
+  right: 50%;
+  top: 85%;
+  transform: translate(+50%, -50%);
+
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  font-family: "Press Start 2P", cursive;
+  font-size: 11px;
+}
+#mapTip {
+  color: white;
+  font-family: "Press Start 2P", cursive;
+  position: fixed;
+  width: 24%;
+  height: 20%;
+  font-size: 12px;
+  text-align: right;
+  right: 3%;
+  bottom: 10%;
+  line-height: 14px;
+  display: none;
+}
+#goalTut {
+  font-family: "Press Start 2P", cursive;
+  font-size: 50px;
+  color: white;
+  position: fixed;
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+  width: 100%;
+  height: 10%;
+
+  left: 50%;
+  top: 2%;
+  transform: translate(-50%, 0);
+  background-color: rgb(0, 0, 0);
+}
+#goalDesTut {
+  font-family: "Press Start 2P", cursive;
+  font-size: 35px;
+  color: white;
+  position: fixed;
+  display: none;
+
+  text-align: left;
+  width: 90%;
+  height: 30%;
+
+  left: 5%;
+  top: 22%;
+
+  background-color: rgb(0, 0, 0);
+  line-height: 45px;
+}
+#buttonTut0 {
+  position: fixed;
+  left: 80%;
+  top: 76%;
+  transform: translate(-50%, 0);
+
+  width: 20%;
+  height: 10%;
+  border: 8px double rgb(228, 228, 228);
+  color: white;
+  display: none;
+
+  font-family: "Press Start 2P", cursive;
+  font-size: 28px;
+
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+#buttonTut0:hover {
+  cursor: pointer;
+  border-width: 10px;
+  font-size: 31px;
+}
+#finalSpeech {
+  font-family: "Press Start 2P", cursive;
+  font-size: 13px;
+  color: white;
+  position: fixed;
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  text-align: justify;
+  line-height: 23px;
+  width: 90%;
+  height: 24%;
+
+  left: 50%;
+  top: 36%;
+  transform: translate(-50%, 0);
+  background-color: rgb(0, 0, 0);
+}
+#whatIsEnd {
+  font-family: "Press Start 2P", cursive;
+  font-size: 40px;
+  color: white;
+  position: fixed;
+  display: none;
+
+  text-align: left;
+  width: 100%;
+  height: 10%;
+
+  left: 5%;
+  top: 4%;
+
+  background-color: rgb(0, 0, 0);
+  /*border: 10px double white;*/
+}
+#stuff {
+  display: none;
+  width: 100%;
+  height: 100%;
+
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  pointer-events: none;
+}
+body {
+  user-select: none;
+}

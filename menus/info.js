@@ -93,12 +93,7 @@ function backToInfo() {
 
 function showEndText() {
   playSound("UIClick");
-  for (let elem of document.getElementsByClassName("info")) {
-    elem.style.display = "none";
-  }
-  for (let elem of document.getElementsByClassName("end")) {
-    elem.style.display = "flex";
-  }
+  alert("Locked");
 }
 
 function showWorldMap() {

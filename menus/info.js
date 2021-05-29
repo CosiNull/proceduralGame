@@ -93,7 +93,7 @@ function backToInfo() {
 
 function showEndText() {
   playSound("UIClick");
-  alert("Locked");
+  alert("It's a secret...");
 }
 
 function showWorldMap() {
